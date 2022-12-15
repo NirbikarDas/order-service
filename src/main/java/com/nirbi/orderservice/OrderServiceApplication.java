@@ -1,6 +1,8 @@
 package com.nirbi.orderservice;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +21,7 @@ public class OrderServiceApplication {
 
 	@GetMapping("/fetchOrders")
 	public List<Order> retrieveOrders() {
-		return orderDao.getOrders();
+		return orderDao.getOrders().stream().sorted(Comparator.comparing(Order::getName)).collect(Collectors.toList());
 	}
 
 	public static void main(String[] args) {
