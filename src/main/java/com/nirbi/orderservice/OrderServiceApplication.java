@@ -24,7 +24,7 @@ public class OrderServiceApplication {
 
 	@GetMapping("/fetchOrders")
 	public List<Order> retrieveOrders() {
-		log.info("used to resolve/debug code");
+		log.info("this is used to debug code");
 		return orderDao.getOrders().stream().sorted(Comparator.comparing(Order::getName)).collect(Collectors.toList());
 	}
 
