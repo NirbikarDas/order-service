@@ -25,8 +25,6 @@ public class OrderServiceApplication {
 	@GetMapping("/fetchOrders")
 	public List<Order> retrieveOrders() {
 		log.info("Received request to retrieve orders .");
-		log.info("Entering into fetch order method .");
-		log.info("Method is handling the request .");
 		return orderDao.getOrders().stream().sorted(Comparator.comparing(Order::getName)).collect(Collectors.toList());
 	}
 
