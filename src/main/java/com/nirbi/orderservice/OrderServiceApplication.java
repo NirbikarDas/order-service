@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @SpringBootApplication
 @RestController
 @RequestMapping("/order")
+@Slf4j
 public class OrderServiceApplication {
 
 	@Autowired
@@ -21,6 +24,7 @@ public class OrderServiceApplication {
 
 	@GetMapping("/fetchOrders")
 	public List<Order> retrieveOrders() {
+		log.info("Received request to retrieve orders .");
 		return orderDao.getOrders().stream().sorted(Comparator.comparing(Order::getName)).collect(Collectors.toList());
 	}
 
